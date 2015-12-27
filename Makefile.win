@@ -1,0 +1,41 @@
+# Project: NavalBatlle
+# Makefile created by Dev-C++ 5.0.0.9
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o $(RES)
+LINKOBJ  = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o $(RES)
+LIBS     = -L"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/lib" -static-libstdc++ -static-libgcc -lconio -g  -fmessage-length=0 
+INCS     = -I"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/include" 
+CXXINCS  = -I"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/include" 
+BIN      = NavalBatlle.exe
+CXXFLAGS = $(CXXINCS)   -fmessage-length=0
+CFLAGS   = $(INCS)   -fmessage-length=0
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before NavalBatlle.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "NavalBatlle.exe" $(LIBS)
+
+Play.o: Play.c
+	$(CC) -c Play.c -o Play.o $(CFLAGS)
+
+PrintOcean.o: PrintOcean.c
+	$(CC) -c PrintOcean.c -o PrintOcean.o $(CFLAGS)
+
+PrintVessels.o: PrintVessels.c
+	$(CC) -c PrintVessels.c -o PrintVessels.o $(CFLAGS)
+
+PutVessels.o: PutVessels.c
+	$(CC) -c PutVessels.c -o PutVessels.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
