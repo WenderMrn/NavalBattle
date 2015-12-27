@@ -36,7 +36,8 @@
 #define BATTLESHIPS 4
 #define AIRCRAFTARRIER 5
 
-/* */
+/* CONFIG MOVEMENT */
+
 #define RIGHT 77
 #define LEFT  75
 #define DOWN  80
