@@ -9,7 +9,7 @@
 #define OCEAN_CHARACTER_CODE 254
 #define OCEAN_SIZE 15
 
-#define XA 18
+#define XA 18 
 #define YA 5
 
 #define XB 41
@@ -79,6 +79,6 @@ void PrintBattleships(int x,int y,int pos);
 
 void PrintAircraftarrier(int x,int y,int pos);
 
-void PutVesselLogicMap(int logicMap[][OCEAN_SIZE],VesselLogicMap verssel);
+void PutVesselLogicMap(int logicMap[][OCEAN_SIZE],int rotation,int vessel,int x, int y);
 
-void removeVesselLogicMap(int logicMap[][OCEAN_SIZE],VesselLogicMap verssel);
+void removeVesselLogicMap(int logicMap[][OCEAN_SIZE],int rotation,int vessel,int x, int y);

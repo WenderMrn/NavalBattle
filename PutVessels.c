@@ -21,6 +21,7 @@ XYKey PutVessels(int ocean){
 
 	char tecla;
 	
+	/* Cursor movement */
 	gotoxy(posX+=1,posY);		
 	  do{
 	  	
@@ -165,27 +166,8 @@ XYKey PutVessels(int ocean){
 					case SEAPLANE:
 						if(myvesselavailable.seaplane >= 1)
 						myvesselavailable.seaplane-=1;	
-										
-						VesselLogicMap vesselLogic = {};
-						
-						switch(rotation){
-							case VESSELS_VERTICAL:
-								/* first coordinate*/
-								vesselLogic.coordinates[0].x = posX+1; 
-								vesselLogic.coordinates[0].y = posY;
-								/* second coordinate */
-								vesselLogic.coordinates[1].x = posX;
-								vesselLogic.coordinates[1].y = posY+1;
-								/* third coordinate*/
-								vesselLogic.coordinates[2].x = posX+2;
-								vesselLogic.coordinates[2].y = posY+1;
-							break;
-							case VESSELS_REVERSE_VERTICAL:
-								
-							break;
-						}
-						
-					
+						/* Mapping the parts of the vessel */										
+						PutVesselLogicMap(oceanLogicMap,rotation,vessel,posX,posY);			
 		 	
 					;break;
 					case SUBMARINE:

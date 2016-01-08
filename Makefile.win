@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o $(RES)
-LINKOBJ  = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o $(RES)
+OBJ      = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o CursorMovement.o $(RES)
+LINKOBJ  = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o CursorMovement.o $(RES)
 LIBS     = -L"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/lib" -static-libstdc++ -static-libgcc -lconio -g  -fmessage-length=0 
 INCS     = -I"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/include" 
 CXXINCS  = -I"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/include" 
@@ -42,3 +42,6 @@ main.o: main.c
 
 GameVesselLogicMap.o: GameVesselLogicMap.c
 	$(CC) -c GameVesselLogicMap.c -o GameVesselLogicMap.o $(CFLAGS)
+
+CursorMovement.o: CursorMovement.c
+	$(CC) -c CursorMovement.c -o CursorMovement.o $(CFLAGS)
