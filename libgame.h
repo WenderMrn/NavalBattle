@@ -57,6 +57,14 @@ typedef struct{
 	int seaplane,submarine,cruisers,battleships,aircraftarrier;
 }NumberMyVessels;
 
+typedef struct
+{	int x,y;
+}Coordinate;
+
+typedef struct
+{    Coordinate coordinates[5];
+}VesselLogicMap;
+
 XYKey PutVessels(int ocean);
 
 void PrintOcean(int pos,int size);
@@ -70,3 +78,7 @@ void PrintCruisers(int x,int y,int pos);
 void PrintBattleships(int x,int y,int pos);
 
 void PrintAircraftarrier(int x,int y,int pos);
+
+void PutVesselLogicMap(int logicMap[][OCEAN_SIZE],VesselLogicMap verssel);
+
+void removeVesselLogicMap(int logicMap[][OCEAN_SIZE],VesselLogicMap verssel);

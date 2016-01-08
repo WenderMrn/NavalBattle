@@ -5,8 +5,9 @@ XYKey PutVessels(int ocean){
 	XYKey xykey = {0,0,'/0'};
 	int posX=0,posY=0,vessel = SEAPLANE,rotation=1;
 	
-	NumberMyVessels myvessel = {3,4,3,2,1};
-		
+	/* Default number of available vessel */
+	NumberMyVessels myvesselavailable = {3,4,3,2,1};
+	/* Available Oceans */	
 	if(ocean == OCEAN_LEFT){
 		posX=XA,posY=YA;	
 	}else if(ocean == OCEAN_RIGHT){
@@ -15,6 +16,9 @@ XYKey PutVessels(int ocean){
 	int maxX = posX + OCEAN_SIZE,minX = posX;
 	int maxY = posY + OCEAN_SIZE,minY = posY;
 	
+	/* Mapping logic ocean*/
+	int oceanLogicMap[OCEAN_SIZE][OCEAN_SIZE];
+
 	char tecla;
 	
 	gotoxy(posX+=1,posY);		
@@ -67,7 +71,7 @@ XYKey PutVessels(int ocean){
 			switch(vessel){
 				case SEAPLANE:				
 					/* print rectification vessel */
-					if(myvessel.seaplane == 0){
+					if(myvesselavailable.seaplane == 0){
 						vessel++;
 						break;	
 					} 
@@ -95,7 +99,7 @@ XYKey PutVessels(int ocean){
 					PrintSeaPlanes(posX,posY,rotation);												
 				break;
 				case SUBMARINE:
-					if(myvessel.submarine == 0){
+					if(myvesselavailable.submarine == 0){
 						vessel++;
 						break;	
 					} 
@@ -103,7 +107,7 @@ XYKey PutVessels(int ocean){
 				break;
 				case CRUISERS:
 						/* print rectification vessel */
-					if(myvessel.cruisers == 0){
+					if(myvesselavailable.cruisers == 0){
 						vessel++;
 						break;	
 					} 
@@ -117,11 +121,11 @@ XYKey PutVessels(int ocean){
 					}									
 				break;
 				case BATTLESHIPS:
-					if(myvessel.battleships == 0){
+					if(myvesselavailable.battleships == 0){
 						vessel++;
 						break;	
 					} 
-						/* print rectification vessel */
+						/* Print rectification vessel */
 					if(rotation == VESSELS_HORIZONTAL && posX+2 == maxX){
 						posX-=1;
 					}
@@ -131,11 +135,11 @@ XYKey PutVessels(int ocean){
 					PrintBattleships(posX,posY,rotation);		
 				break;
 				case AIRCRAFTARRIER:
-					if(myvessel.aircraftarrier == 0){
+					if(myvesselavailable.aircraftarrier == 0){
 						vessel++;
 						break;	
 					} 
-						/* print rectification vessel */
+						/* Print rectification vessel */
 					if(rotation == VESSELS_HORIZONTAL && posX+2 == maxX){
 						posX-=1;
 					}
@@ -147,35 +151,58 @@ XYKey PutVessels(int ocean){
 			}
 			
 			gotoxy(5,24);printf("x: %d y: %d / MaxX: %d / Maxy: %d / MinX: %d / Miny: %d  vessel:%d Rotacao:%d",posX,posY,maxX,maxY,minX,minY,vessel,rotation);
-			gotoxy(1,22);printf("%d ",myvessel.seaplane);
-			gotoxy(2,22);printf("%d ",myvessel.battleships);
-			gotoxy(3,22);printf("%d ",myvessel.cruisers);
-			gotoxy(4,22);printf("%d ",myvessel.submarine);
-			gotoxy(5,22);printf("%d ",myvessel.aircraftarrier);
+			gotoxy(1,22);printf("%d ",myvesselavailable.seaplane);
+			gotoxy(2,22);printf("%d ",myvesselavailable.battleships);
+			gotoxy(3,22);printf("%d ",myvesselavailable.cruisers);
+			gotoxy(4,22);printf("%d ",myvesselavailable.submarine);
+			gotoxy(5,22);printf("%d ",myvesselavailable.aircraftarrier);
 			gotoxy(posX,posY);
 			
+			/* Add vessel to game map and remove from my available vessel*/
 			if(tecla == ENTER){
-				
+			
 				switch(vessel){
 					case SEAPLANE:
-						if(myvessel.seaplane >= 1)
-						myvessel.seaplane-=1; 
+						if(myvesselavailable.seaplane >= 1)
+						myvesselavailable.seaplane-=1;	
+										
+						VesselLogicMap vesselLogic = {};
+						
+						switch(rotation){
+							case VESSELS_VERTICAL:
+								/* first coordinate*/
+								vesselLogic.coordinates[0].x = posX+1; 
+								vesselLogic.coordinates[0].y = posY;
+								/* second coordinate */
+								vesselLogic.coordinates[1].x = posX;
+								vesselLogic.coordinates[1].y = posY+1;
+								/* third coordinate*/
+								vesselLogic.coordinates[2].x = posX+2;
+								vesselLogic.coordinates[2].y = posY+1;
+							break;
+							case VESSELS_REVERSE_VERTICAL:
+								
+							break;
+						}
+						
+					
+		 	
 					;break;
 					case SUBMARINE:
-						if(myvessel.submarine >= 1)
-						myvessel.submarine-=1; 
+						if(myvesselavailable.submarine >= 1)
+						myvesselavailable.submarine-=1; 
 					;break;
 					case CRUISERS:
-						if(myvessel.cruisers >= 1)
-						myvessel.cruisers-=1; 
+						if(myvesselavailable.cruisers >= 1)
+						myvesselavailable.cruisers-=1; 
 					;break;
 					case BATTLESHIPS:
-						if(myvessel.battleships >= 1)
-						myvessel.battleships-=1; 
+						if(myvesselavailable.battleships >= 1)
+						myvesselavailable.battleships-=1; 
 					;break;
 					case AIRCRAFTARRIER:
-						if(myvessel.aircraftarrier >= 1)
-						myvessel.aircraftarrier-=1; 
+						if(myvesselavailable.aircraftarrier >= 1)
+						myvesselavailable.aircraftarrier-=1; 
 					;break;
 				}
 

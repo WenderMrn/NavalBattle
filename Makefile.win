@@ -4,11 +4,11 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o $(RES)
-LINKOBJ  = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o $(RES)
-LIBS     = -L"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/lib" -static-libstdc++ -static-libgcc -lconio -g  -fmessage-length=0 
-INCS     = -I"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/include" 
-CXXINCS  = -I"A:/Programas/Dev C++ e Conio2/Dev-Cpp portable/MinGW32/include" 
+OBJ      = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o $(RES)
+LINKOBJ  = Play.o PrintOcean.o PrintVessels.o PutVessels.o main.o GameVesselLogicMap.o $(RES)
+LIBS     = -L"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/lib" -static-libstdc++ -static-libgcc -lconio -g  -fmessage-length=0 
+INCS     = -I"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/include" 
+CXXINCS  = -I"C:/Users/Wender/Google Drive/IFPB/Materiais das Disciplinas/3º período/02. Estrutura de Dados/Dev-Cpp portable + conio2/MinGW32/include" 
 BIN      = NavalBatlle.exe
 CXXFLAGS = $(CXXINCS)   -fmessage-length=0
 CFLAGS   = $(INCS)   -fmessage-length=0
@@ -39,3 +39,6 @@ PutVessels.o: PutVessels.c
 
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
+
+GameVesselLogicMap.o: GameVesselLogicMap.c
+	$(CC) -c GameVesselLogicMap.c -o GameVesselLogicMap.o $(CFLAGS)
